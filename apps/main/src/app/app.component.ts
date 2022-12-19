@@ -11,6 +11,7 @@ import {AsyncPipe, JsonPipe} from '@angular/common';
       <a href="/extra">Extra</a>
       <a href="/store-containment">Store Containment</a>
       <a href="/push-containment">Push Containment</a>
+      <a href="/debounce-store">Debounce Store</a>
     </nav>
 
 

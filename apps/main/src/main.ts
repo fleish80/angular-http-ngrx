@@ -32,6 +32,11 @@ const routes: Routes = [
     path: 'push-containment',
     loadComponent: () => import('./push-containment/push-containment.component').then(m => m.PushContainmentComponent),
     title: 'Push Containment',
+  },
+  {
+    path: 'debounce-store',
+    loadComponent: () => import('./debounce-store/debounce-store.component').then(m => m.DebounceStoreComponent),
+    title: 'Debounce Store',
   }
 ];
 
