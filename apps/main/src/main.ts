@@ -1,8 +1,17 @@
 import {AppComponent} from './app/app.component';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {provideHttpClient} from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpHandlerFn,
+  HttpRequest,
+  provideHttpClient,
+  withInterceptors,
+  withInterceptorsFromDi,
+  withJsonpSupport
+} from '@angular/common/http';
 import {provideRouter, Routes} from '@angular/router';
 import {provideGlobalRouterStore} from '@ngworker/router-component-store';
+import {ExampleInterceptor} from './example.interceptor';
 
 const routes: Routes = [
   {
@@ -37,15 +46,31 @@ const routes: Routes = [
     path: 'debounce-store',
     loadComponent: () => import('./debounce-store/debounce-store.component').then(m => m.DebounceStoreComponent),
     title: 'Debounce Store',
-  }
+  },
+  {
+    path: 'switcher',
+    loadComponent: () => import('./switcher/switcher.component').then(c => c.SwitcherComponent),
+    title: 'Switcher',
+    loadChildren: () => import('./switcher/switcher.router').then(r => r.switcherRouter),
+  },
 ];
 
 bootstrapApplication(AppComponent,
   {
     providers: [
-      provideHttpClient(),
+      {provide: HTTP_INTERCEPTORS, useClass: ExampleInterceptor, multi: true},
+      provideHttpClient(
+        withInterceptors([(request: HttpRequest<unknown>, next: HttpHandlerFn) => {
+          console.log('%cInterceptor', 'font-size:40px; color:green');
+          console.log(request);
+          return next(request);
+        }]),
+        withInterceptorsFromDi(),
+        withJsonpSupport()
+      ),
       provideRouter(routes),
-      provideGlobalRouterStore()
+      provideGlobalRouterStore(),
+
     ]
   })
   .catch((err) => console.error(err));

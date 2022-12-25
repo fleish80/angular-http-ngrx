@@ -15,7 +15,16 @@ export class JokesService extends ComponentStore<State> {
 
   constructor() {
     super({joke: {value: ''}, categories: []});
+
+    this.httpClient.jsonp('https://api.stackexchange.com/2.2/info?site=stackoverflow', 'callback')
+      .subscribe(res => console.log(res));
+
+    const callback = (req: any) => {
+      alert('xxx');
+    }
+
   }
+
 
   private httpClient = inject(HttpClient);
 

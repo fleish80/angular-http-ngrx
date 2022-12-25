@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {RouterStore} from '@ngworker/router-component-store';
 import {AsyncPipe, JsonPipe} from '@angular/common';
 
@@ -7,11 +7,12 @@ import {AsyncPipe, JsonPipe} from '@angular/common';
   selector: 'angular-http-ngrx-root',
   template: `
     <nav class="nav">
-      <a href="/store-state-init">Store State Init</a>
-      <a href="/extra">Extra</a>
-      <a href="/store-containment">Store Containment</a>
-      <a href="/push-containment">Push Containment</a>
-      <a href="/debounce-store">Debounce Store</a>
+      <a routerLink="/store-state-init">Store State Init</a>
+      <a routerLink="/extra">Extra</a>
+      <a routerLink="/store-containment">Store Containment</a>
+      <a routerLink="/push-containment">Push Containment</a>
+      <a routerLink="/debounce-store">Debounce Store</a>
+      <a routerLink="/switcher">Switcher</a>
     </nav>
 
 
@@ -29,7 +30,8 @@ import {AsyncPipe, JsonPipe} from '@angular/common';
   imports: [
     RouterOutlet,
     AsyncPipe,
-    JsonPipe
+    JsonPipe,
+    RouterLink
   ],
   standalone: true
 })
