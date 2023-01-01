@@ -4,7 +4,7 @@ import {Observable, switchMap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()
-export class JsonpService extends ComponentStore<{ data: any }> {
+export class JsonpService extends ComponentStore<{ data: unknown }> {
 
 
   #httpClient = inject(HttpClient);
@@ -19,7 +19,7 @@ export class JsonpService extends ComponentStore<{ data: any }> {
   readonly load = this.effect((trigger$: Observable<void>) =>
     trigger$.pipe(
       switchMap(() =>
-        this.#httpClient.jsonp<any>('https://api.stackexchange.com/2.2/info?site=stackoverflow', 'callback').pipe(
+        this.#httpClient.jsonp<unknown>('https://api.stackexchange.com/2.2/info?site=stackoverflow', 'callback').pipe(
           tapResponse(
             (data) => this.setState({data}),
             (error) => console.error(error)

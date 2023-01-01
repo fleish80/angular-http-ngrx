@@ -7,7 +7,7 @@ import {
   provideHttpClient,
   withInterceptors,
   withInterceptorsFromDi,
-  withJsonpSupport
+  withJsonpSupport, withNoXsrfProtection, withXsrfConfiguration
 } from '@angular/common/http';
 import {provideRouter, Routes} from '@angular/router';
 import {provideGlobalRouterStore} from '@ngworker/router-component-store';
@@ -69,7 +69,12 @@ bootstrapApplication(AppComponent,
           return next(request);
         }]),
         withInterceptorsFromDi(),
-        withJsonpSupport()
+        withJsonpSupport(),
+        // withXsrfConfiguration({
+        //   cookieName: 'app-Xsrf-Cookie',
+        //   headerName: 'app-Xsrf-Header',
+        // }),
+        // withNoXsrfProtection()
       ),
       provideRouter(routes),
       provideGlobalRouterStore(),
