@@ -49,9 +49,12 @@ const routes: Routes = [
   },
   {
     path: 'switcher',
-    loadComponent: () => import('./switcher/switcher.component').then(c => c.SwitcherComponent),
-    title: 'Switcher',
     loadChildren: () => import('./switcher/switcher.router').then(r => r.switcherRouter),
+  },
+  {
+    path: 'jsonp',
+    loadComponent: () => import('./jsonp/jsonp.component').then(c => c.JsonpComponent),
+    title: 'Jsonp',
   },
 ];
 
