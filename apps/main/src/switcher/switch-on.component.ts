@@ -1,10 +1,10 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {provideComponentStore} from '@ngrx/component-store';
 import {JokesService} from '../jokes.service';
 import {PushModule} from '@ngrx/component';
 
 @Component({
-  selector: 'angular-standalone-switch-on',
+  selector: 'angular-http-ngrx-switch-on',
   standalone: true,
   imports: [
     PushModule
@@ -17,7 +17,7 @@ import {PushModule} from '@ngrx/component';
     provideComponentStore(JokesService)
   ]
 })
-export class SwitchOnComponent {
+export class SwitchOnComponent implements OnInit {
 
   private jokesService = inject(JokesService);
 

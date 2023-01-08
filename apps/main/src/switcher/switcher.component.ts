@@ -3,7 +3,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 
 
 @Component({
-  selector: 'angular-standalone-switcher',
+  selector: 'angular-http-ngrx-switcher',
   standalone: true,
   imports: [RouterOutlet, RouterLink],
   template: `
