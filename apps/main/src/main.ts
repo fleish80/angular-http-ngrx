@@ -57,6 +57,11 @@ const routes: Routes = [
     loadComponent: () => import('./jsonp/jsonp.component').then(c => c.JsonpComponent),
     title: 'Jsonp',
   },
+  {
+    path: 'async',
+    loadComponent: () => import('./async/async.component').then(c => c.AsyncComponent),
+    title: 'Async component store',
+  },
 ];
 
 bootstrapApplication(AppComponent,

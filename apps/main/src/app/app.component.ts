@@ -14,6 +14,7 @@ import {AsyncPipe, JsonPipe} from '@angular/common';
       <a routerLink="/debounce-store">Debounce Store</a>
       <a routerLink="/switcher">Switcher</a>
       <a routerLink="/jsonp">Jsonp</a>
+      <a routerLink="/async">Async Component Store</a>
     </nav>
 
 

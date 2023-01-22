@@ -38,18 +38,27 @@ export function debounceSync<T>(): MonoTypeOperatorFunction<T> {
       rootSubscription.add(
         source.subscribe({
           complete: () => {
+
+            console.log("COMPLETE", { actionSubscription, actionValue });
+
             if (actionSubscription) {
               observer.next(actionValue);
             }
             observer.complete();
           },
           error: (error) => {
+
+            console.log("ERROR", { actionSubscription });
+
             observer.error(error);
           },
           next: (value) => {
             actionValue = value;
             if (!actionSubscription) {
               actionSubscription = asapScheduler.schedule(() => {
+
+                console.log("ASAP", { actionSubscription, actionValue });
+
                 observer.next(actionValue);
                 actionSubscription = undefined;
               });
