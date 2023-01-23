@@ -53,6 +53,7 @@ export function debounceSync<T>(): MonoTypeOperatorFunction<T> {
             observer.error(error);
           },
           next: (value) => {
+            console.log("NEXT", { actionSubscription, value });
             actionValue = value;
             if (!actionSubscription) {
               actionSubscription = asapScheduler.schedule(() => {

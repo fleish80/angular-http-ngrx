@@ -15,11 +15,11 @@ import {AsyncService} from './async.service';
       </div>
       <div class="wrapper">
           <div>
-              <h4>debounce: false</h4>
+              <h4>debounce: true</h4>
               <div *ngFor="let state of debouncedStates$ | async">{{state}}</div>
           </div>
           <div>
-              <h4>debounce: true</h4>
+              <h4>debounce: false</h4>
               <div *ngFor="let state of nonDebouncedStates$ | async ">{{state}}</div>
           </div>
       </div>

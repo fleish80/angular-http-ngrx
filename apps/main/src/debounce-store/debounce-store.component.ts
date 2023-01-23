@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {from, interval, take} from 'rxjs';
-import {debounceSync} from '../debounce-sync';
+import {debounceSync} from './debounce-sync';
 
 @Component({
   selector: 'angular-http-ngrx-debonce-store',
